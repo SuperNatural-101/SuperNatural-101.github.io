@@ -152,6 +152,330 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-零基础小白的Python学习之路（二）对象、变量、简单数据类型及运算符" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/01/%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%B0%8F%E7%99%BD%E7%9A%84Python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AF%B9%E8%B1%A1%E3%80%81%E5%8F%98%E9%87%8F%E3%80%81%E7%AE%80%E5%8D%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E8%BF%90%E7%AE%97%E7%AC%A6/">零基础小白的Python学习之路（一）基础起步及编程环境搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/01/%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%B0%8F%E7%99%BD%E7%9A%84Python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AF%B9%E8%B1%A1%E3%80%81%E5%8F%98%E9%87%8F%E3%80%81%E7%AE%80%E5%8D%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E8%BF%90%E7%AE%97%E7%AC%A6/" class="archive-article-date">
+  	<time datetime="2020-08-01T09:35:24.705Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>@<a href="%E7%9B%AE%E5%BD%95">TOC</a></p>
+<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><p>在我们的这个Python语言中，同样存在对象这个概念，在C++中，对象是类的实例化出得具体实例，里面封装了类的属性成员，方法等，而在Python中也比较相似。<br>在Python中，对象的本质是一个内存块，里面同样有一些属性值，一些类型等。<br>如图，在内存中，每个对象大致是这样的情况<br>包含：</p>
+<ul>
+<li>标识（唯一）（identity）</li>
+<li>类型（type）</li>
+<li>值（value）<br>多个不同大小的对象（内存块）位于计算机的堆空间当中<br><img src="https://img-blog.csdnimg.cn/20200611160200132.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NDk1NDY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>我们可以通过这几个函数找到对应的值：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3</span></span><br><span class="line">print(id(a))</span><br><span class="line">print(type(a))</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><img src="https://img-blog.csdnimg.cn/20200611160923672.png" alt="在这里插入图片描述"><br>此时内存当中是这样的：<br><img src="https://img-blog.csdnimg.cn/20200611162219555.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NDk1NDY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>实际上，id就是我们的对象的地址，在新定义一个变量a时，其实是将这个对象中的id（即地址）赋值给我们的变量a，我们在访问3这个值的时候是通过变量a所被赋的id值找到这个对象中的value值的。<br>于是我们“<strong>引用</strong>”的概念如下：</p>
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><p>在 Python 中，变量也成为：对象的引用。<br>因为，变量存储的就是对象的<strong>地址</strong>。<br>变量通过地址引用了“对象”。<br>变量位于：栈内存<br>对象位于：堆内存。<br><img src="https://img-blog.csdnimg.cn/20200611162444447.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NDk1NDY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="1、变量声明"><a href="#1、变量声明" class="headerlink" title="1、变量声明"></a>1、变量声明</h2><p><strong>基本格式： 变量名 = 表达式</strong><br>【注】</p>
+<ul>
+<li>和C / C++ 等语言等不同，Python是<strong>动态类型语言</strong>，变量不需显式声明类型，根据变量所引用的对象，Python解释器自动确定数据类型。</li>
+<li>使用前必须<strong>初始化</strong>。</li>
+<li>Python是<strong>强类型语言</strong>，每个对象都有数据类型，只支持该类型支持的操作。</li>
+<li>对象和变量：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">del</span> a</span><br></pre></td></tr></table></figure>
+表示删除栈中的a变量（<strong>但对象仍然存在</strong>）<br>如果最终对象没有被变量引用，就会被<strong>垃圾回收</strong><h2 id="2、链式赋值"><a href="#2、链式赋值" class="headerlink" title="2、链式赋值"></a>2、链式赋值</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = y = z = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h2 id="3、系列解包赋值及变量互换"><a href="#3、系列解包赋值及变量互换" class="headerlink" title="3、系列解包赋值及变量互换"></a>3、系列解包赋值及变量互换</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a,b,c = <span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span></span><br><span class="line">a,b = <span class="number">1</span>,<span class="number">2</span></span><br><span class="line">a,b = b,a</span><br></pre></td></tr></table></figure>
+<h2 id="4、常量问题"><a href="#4、常量问题" class="headerlink" title="4、常量问题"></a>4、常量问题</h2>Python中不支持常量，只能在<strong>逻辑上</strong>进行实现<h1 id="基本内置数据类型"><a href="#基本内置数据类型" class="headerlink" title="基本内置数据类型"></a>基本内置数据类型</h1></li>
+<li>整型</li>
+<li>浮点型</li>
+<li>布尔型</li>
+<li>字符串<h2 id="整型（数字）"><a href="#整型（数字）" class="headerlink" title="整型（数字）"></a>整型（数字）</h2><h4 id="基本运算符"><a href="#基本运算符" class="headerlink" title="基本运算符"></a>基本运算符</h4></li>
+<li>加：+</li>
+<li>减：-</li>
+<li>乘：*</li>
+<li>除：<pre><code>-浮点数除法：/
+-整数除法：//</code></pre>
+</li>
+<li>模（取余）：%</li>
+<li>幂：**</li>
+</ul>
+<p>【注】余数不能为0，会抛异常<br>另：<strong>divmod()函数</strong>可以同时得到商和余数（返回的是一个元组）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">13</span></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line">c = divmod(a,b)</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200612075626232.png" alt="在这里插入图片描述"></p>
+<h4 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h4><p>在Python中，除十进制外，还有二进制、八进制和十六进制<br>Python3中，int可存储任意大小的整数，那些巨大的科学计算就可以利用Python来实现了</p>
+<ul>
+<li>二进制：0b / 0B，0 1</li>
+<li>八进制：0o / 0O，0 1 2 3 4 5 6 7</li>
+<li>十六进制：0x / 0X，0 1 2 3 4 5 6 7 8 9 a b c d e f</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0b101</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0o10</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0x10</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0xff</span></span><br><span class="line"><span class="number">255</span></span><br></pre></td></tr></table></figure>
+<p>转换函数：</p>
+<ul>
+<li>bin()：转成二进制</li>
+<li>oct()：转成八进制</li>
+<li>hex()：转成十六进制</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">n = input(<span class="string">&quot;输入十进制数：&quot;</span>)</span><br><span class="line">num = int(n)</span><br><span class="line">print(<span class="string">&quot;转换为二进制数为：&quot;</span>, bin(num))</span><br><span class="line">print(<span class="string">&quot;转换为八进制数为：&quot;</span>, oct(num))</span><br><span class="line">print(<span class="string">&quot;转换为十六进制数为：&quot;</span>, hex(num))</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200612082603525.png" alt="在这里插入图片描述"></p>
+<h4 id="整数与其他数据类型的转换"><a href="#整数与其他数据类型的转换" class="headerlink" title="整数与其他数据类型的转换"></a>整数与其他数据类型的转换</h4><p>使用int()函数实现类型转换</p>
+<ul>
+<li>浮点数：Python中直接舍去小数部分（注意<strong>不会四舍五入</strong>！）</li>
+<li>布尔值：True—&gt;1；False—&gt;0</li>
+<li>符合<strong>整数格式</strong>的字符串：浮点数会报错，不支持，整数直接转换成对应整数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">65.79</span></span><br><span class="line">print(int(a))</span><br><span class="line">b = <span class="literal">True</span></span><br><span class="line">print(int(b))</span><br><span class="line">c = <span class="string">&quot;125&quot;</span></span><br><span class="line">print(int(c))</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200612083909367.png" alt="在这里插入图片描述"></p>
+<h2 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h2><h4 id="表示"><a href="#表示" class="headerlink" title="表示"></a>表示</h4><p>浮点数（float）用$$a×b^{10}$$形式的科学计数法表示。比如：3.14，表示成：314E-2 或者 314e-2。 这些数字在内存中也是按照<strong>科学计数法</strong>存储。</p>
+<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><ul>
+<li>类似于int()函数，float()函数用来转换成浮点数</li>
+<li>整数+浮点数的混合运算，表达式结果会自动转成浮点数</li>
+<li><strong>round()函数</strong>：可以返回浮点数<strong>四舍五入</strong>后的值<br>【注】不会改变原有值，而是产生新的值，并返回</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">314E-2</span></span><br><span class="line">print(float(a))</span><br><span class="line">b = <span class="string">&quot;91.75&quot;</span></span><br><span class="line">print(float(b))</span><br><span class="line">print(round(float(b)))</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200612085509964.png" alt="在这里插入图片描述"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">c = <span class="number">123</span></span><br><span class="line">d = <span class="number">75.4</span></span><br><span class="line">print(type(c))</span><br><span class="line">print(type(d))</span><br><span class="line">f = c + d</span><br><span class="line">print(f)</span><br><span class="line">print(type(f))</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200612085547236.png" alt="在这里插入图片描述"></p>
+<h4 id="增强型赋值运算符"><a href="#增强型赋值运算符" class="headerlink" title="增强型赋值运算符"></a>增强型赋值运算符</h4><ul>
+<li>+=</li>
+<li>-=</li>
+<li>*=</li>
+<li>/=</li>
+<li>//=</li>
+<li>**=</li>
+<li>%=<h4 id="补充一个小点"><a href="#补充一个小点" class="headerlink" title="补充一个小点"></a>补充一个小点</h4>关于<strong>时间表示</strong><br>Unix时间点，也叫Unix时间戳<br>时间戳是自 1970 年 1 月 1 日（00:00:00 GMT）以来的秒数。它也被称为 Unix 时间戳（Unix Timestamp）。</li>
+</ul>
+<p>Unix时间戳(Unix timestamp)，或称Unix时间(Unix time)、POSIX时间(POSIX time)，是一种时间表示方式，定义为从格林威治时间1970年01月01日00时00分00秒起至现在的总秒数（以毫秒计算）。Unix时间戳不仅被使用在Unix系统、类Unix系统中，也在许多其他操作系统中被广泛采用。<br>比如在Python中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line">t_second = int(time.time())</span><br><span class="line">t_minute = t_second//<span class="number">60</span></span><br><span class="line">t_hour = t_minute//<span class="number">60</span></span><br><span class="line">t_day = t_hour//<span class="number">24</span></span><br><span class="line">t_year = t_day//<span class="number">365</span></span><br><span class="line">print(t_year)</span><br><span class="line">print(<span class="string">&quot;今年是&quot;</span>+str(<span class="number">1970</span> + t_year)+<span class="string">&quot;年&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200612171740176.png" alt="在这里插入图片描述"></p>
+<h4 id="其他基本运算符"><a href="#其他基本运算符" class="headerlink" title="其他基本运算符"></a>其他基本运算符</h4><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>and , or , not</td>
+<td>布尔与 ，布尔或，布尔非</td>
+</tr>
+<tr>
+<td>is , is not</td>
+<td>同一性判断，判断是否为同一个对象</td>
+</tr>
+<tr>
+<td>＜,＜＝,＞,＞＝ ,!= , ==</td>
+<td>比较值，可以连用</td>
+</tr>
+<tr>
+<td>&lt;&lt; , &gt;&gt;</td>
+<td>移位（左移1位相当于乘以2，右移1位相当于除以2）</td>
+</tr>
+<tr>
+<td>~</td>
+<td>按位翻转</td>
+</tr>
+</tbody></table>
+<ul>
+<li>, - , * , / , // , %|加，减，乘，浮点除，整数除，取余</li>
+</ul>
+<p>**|幂运算</p>
+<h2 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h2><p>两个关键字：True 和 False<br>True = 1<br>False = 0<br>所以也可以和整数进行运算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="literal">True</span></span><br><span class="line">b = <span class="number">5</span></span><br><span class="line">print(a+b)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200612165407951.png" alt="在这里插入图片描述"></p>
+<h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><ul>
+<li>==</li>
+<li>!=</li>
+<li>＞</li>
+<li>＜</li>
+<li>＞=</li>
+<li>＜=<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4></li>
+<li><strong>或 or</strong>：x or y：<pre><code>-若x为True—&gt;True
+-若x为False—&gt;y的值</code></pre>
+</li>
+<li><strong>与 and</strong>：x and y：<pre><code>-若x为True—&gt;y的值
+-若x为False—&gt;False </code></pre>
+</li>
+<li><strong>非 not</strong>：not x：<pre><code>-若x为True—&gt;False
+-若x为False—&gt;True</code></pre>
+<h4 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h4><img src="https://img-blog.csdnimg.cn/2020061217391158.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NDk1NDY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>【注】</li>
+<li>乘除优先于加减</li>
+<li>位运算和算术运算&gt;比较运算符&gt;赋值运算符&gt;逻辑运算符</li>
+</ul>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>本质：字符序列</p>
+<ul>
+<li>Python字符串不可变（<strong>不可以直接替换其中某一字符</strong>）</li>
+<li>Python不支持单字符类型，也作为一个字符串来使用</li>
+</ul>
+<h4 id="字符串的包括"><a href="#字符串的包括" class="headerlink" title="字符串的包括"></a>字符串的包括</h4><ul>
+<li>单引号 / 双引号（根据具体情况，比如用于区别于句子间的引号等情况）</li>
+<li>三个单引号 / 三个双引号（创建多行字符串）</li>
+<li>字符串可以为空：**str = “”**（中间无空格）<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    She saids:&quot;Are you kidding me?&quot;</span></span><br><span class="line"><span class="string">    and he answered:&quot;No, I&#x27;m serious!&quot;</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">print(n)</span><br></pre></td></tr></table></figure>
+<img src="https://img-blog.csdnimg.cn/20200611165130863.png" alt="在这里插入图片描述"><h4 id="字符串编码"><a href="#字符串编码" class="headerlink" title="字符串编码"></a>字符串编码</h4>Python：Unicode（16位）<br><strong>两个配对内置函数：</strong></li>
+<li>ord()：将字符转换成对应的ASCII 数值 / Unicode 数值</li>
+<li>chr()：将十进制数字转换成对应字符<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;b&quot;</span></span><br><span class="line">print(ord(a))</span><br><span class="line">m = <span class="number">97</span></span><br><span class="line">print(chr(m))</span><br></pre></td></tr></table></figure>
+<h4 id="求字符串长度"><a href="#求字符串长度" class="headerlink" title="求字符串长度"></a>求字符串长度</h4></li>
+<li>len()<h4 id="字符串大小写转换"><a href="#字符串大小写转换" class="headerlink" title="字符串大小写转换"></a>字符串大小写转换</h4></li>
+<li>capitalize()：整个字符串只令第一个字母变为大写</li>
+<li>title()：字符串当中的每个单词首字母转成大写</li>
+<li>upper()：所有字符全转成大写</li>
+<li>lower()：所有字符全转成小写</li>
+<li>swapcase()：所有字母大小写替换<h4 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h4></li>
+<li>加号“+”拼接：<pre><code>- “+”号两边为字符串—&gt;直接拼接
+- “+”号两边为数字—&gt;进行加法运算
+- “+”号两边类型不同—&gt;抛异常</code></pre>
+</li>
+<li>多个字符串放到一起直接拼接：<pre><code>-如，&#39;aa&#39; &#39;bb&#39; ——&gt; &#39;aabb&#39; </code></pre>
+<h4 id="字符串复制"><a href="#字符串复制" class="headerlink" title="字符串复制"></a>字符串复制</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&#x27;asd&#x27;</span> * <span class="number">3</span></span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<img src="https://img-blog.csdnimg.cn/20200611173507772.png" alt="在这里插入图片描述"><h4 id="不换行打印字符串"><a href="#不换行打印字符串" class="headerlink" title="不换行打印字符串"></a>不换行打印字符串</h4><strong>基本格式：print(“字符串1” , end = “字符串2”)</strong></li>
+<li>字符串1：要打印的字符串</li>
+<li>字符串2：以什么样的字符串<strong>结尾</strong>（可以是任意或空格或空，默认是<strong>换行符</strong>）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&quot;abc&quot;</span> , end = <span class="string">&quot;&quot;</span>)</span><br><span class="line">print(<span class="string">&quot;def&quot;</span> , end = <span class="string">&quot;&quot;</span>)</span><br><span class="line">print(<span class="string">&quot;ghi&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200611174528487.png" alt="在这里插入图片描述"></p>
+<h4 id="从控制台读取字符串（键盘输入）"><a href="#从控制台读取字符串（键盘输入）" class="headerlink" title="从控制台读取字符串（键盘输入）"></a>从控制台读取字符串（键盘输入）</h4><ul>
+<li>input()：从控制台读取键盘输入内容</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>my = input(<span class="string">&quot;请输入你的名字:&quot;</span>)</span><br><span class="line">请输入你的名字:黎明</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my</span><br><span class="line"><span class="string">&#x27;黎明&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br></pre></td></tr></table></figure>
+<h4 id="str-函数：数字—-gt-字符串"><a href="#str-函数：数字—-gt-字符串" class="headerlink" title="str()函数：数字—&gt;字符串"></a>str()函数：数字—&gt;字符串</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3.1415</span></span><br><span class="line">b = str(a)</span><br><span class="line">print(a)</span><br><span class="line">print(type(a))</span><br><span class="line">print(b)</span><br><span class="line">print(type(b))</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200611180539130.png" alt="在这里插入图片描述"><br>会发现，虽然输出的值是一样的，但数据类型已经由浮点型float转变成了字符串类型str<br>同样，<strong>布尔值</strong>和<strong>科学计数法</strong>也可以进行转换：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3.14e3</span></span><br><span class="line">b = <span class="literal">True</span></span><br><span class="line">print(type(a))</span><br><span class="line">print(type(b))</span><br><span class="line">print(str(a))</span><br><span class="line">print(type(str(a)))</span><br><span class="line">print(str(b))</span><br><span class="line">print(type(str(b)))</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200611181119717.png" alt="在这里插入图片描述"></p>
+<h4 id="使用-提取字符"><a href="#使用-提取字符" class="headerlink" title="使用[ ]提取字符"></a>使用[ ]提取字符</h4><p><strong>基本格式：变量名[偏移量]</strong><br>类似C中的数组按下标访问<br>偏移量可以正向（从左至右），也可以反向（从右至左）</p>
+<ul>
+<li>正向搜索：0 , 1 , 2 , … , len(str)-1</li>
+<li>反向搜索：-len(str) , … , -3 , -2 , -1</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;abcdefghijklmn&quot;</span></span><br><span class="line">b = len(a)</span><br><span class="line">print(b)</span><br><span class="line">print(a[<span class="number">0</span>])</span><br><span class="line">print(a[b<span class="number">-1</span>])</span><br><span class="line">print(a[<span class="number">-1</span>])</span><br><span class="line">print(a[-b])</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200611182228804.png" alt="在这里插入图片描述"></p>
+<h4 id="字符串替换"><a href="#字符串替换" class="headerlink" title="字符串替换"></a>字符串替换</h4><ul>
+<li>replace()：将字符串中某一位置的字符串替换<br>【注】本质：创建<strong>新的字符串对象</strong>作为原来的替换</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;abcdefghijklmn&quot;</span></span><br><span class="line">a = a.replace(<span class="string">&#x27;c&#x27;</span> , <span class="string">&#x27;肖&#x27;</span>)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200611182749525.png" alt="在这里插入图片描述"></p>
+<h4 id="字符串切片（slice操作）"><a href="#字符串切片（slice操作）" class="headerlink" title="字符串切片（slice操作）"></a>字符串切片（slice操作）</h4><p>快速提取字符串<br><strong>基本格式：变量名[start : end : step]</strong><br>【注1】若超出范围，则按照原最大范围进行提取<br>【注2】start 和 end，<strong>包头不包尾</strong></p>
+<ul>
+<li>start：起始偏移量，可为空，默认从头开始</li>
+<li>end：终止偏移量，可为空，默认到结尾</li>
+<li>step：步长，可为空，默认步长为1</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;abcdefghijklmn&quot;</span></span><br><span class="line"><span class="comment"># 正数</span></span><br><span class="line"><span class="comment"># 提取整个字符串</span></span><br><span class="line">print(a[:])</span><br><span class="line"><span class="comment"># 提取（下标）1 到 5-1=4 的字符串，默认步长为1</span></span><br><span class="line">print(a[<span class="number">1</span>:<span class="number">5</span>])</span><br><span class="line"><span class="comment"># 从 start=2 开始到结尾的字符串</span></span><br><span class="line">print(a[<span class="number">2</span>:])</span><br><span class="line"><span class="comment"># 从头开始到 end-1=7-1=6 的字符串</span></span><br><span class="line">print(a[:<span class="number">7</span>])</span><br><span class="line"><span class="comment"># 从 start=1 提取到 end-1=8-1=7，步长step=2 的字符串</span></span><br><span class="line">print(a[<span class="number">1</span>:<span class="number">8</span>:<span class="number">2</span>])</span><br><span class="line">print(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 负数</span></span><br><span class="line"><span class="comment"># 从倒数第3个开始到结尾</span></span><br><span class="line">print(a[<span class="number">-3</span>:])</span><br><span class="line"><span class="comment"># 从倒数第8个到倒数第-3-1个</span></span><br><span class="line">print(a[<span class="number">-8</span>:<span class="number">-3</span>])</span><br><span class="line"><span class="comment"># step=-1，反向提取，相当于将字符串逆序排列</span></span><br><span class="line">print(a[::<span class="number">-1</span>])</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200611190224725.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NDk1NDY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h4 id="split-分割-和-join-合并"><a href="#split-分割-和-join-合并" class="headerlink" title="split()分割 和 join()合并"></a>split()分割 和 join()合并</h4><ul>
+<li><strong>split()**：将字符串分割成多个</strong>子字符串<strong>（存储到</strong>列表**中）<pre><code>-split()：默认按**空格**分隔（或其他空白字符：**换行符/空格/制表符**）
+-split(&#39;字符串&#39;)：按字符串分割（**分割后该字符串不在列表中**）</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;a b c d e f&quot;</span></span><br><span class="line">a = a.split()</span><br><span class="line">print(a)</span><br><span class="line"></span><br><span class="line">b = <span class="string">&quot;to be or not to be a man&quot;</span></span><br><span class="line">b = b.split(<span class="string">&quot;be&quot;</span>)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+<img src="https://img-blog.csdnimg.cn/20200611191150538.png" alt="在这里插入图片描述"></li>
+<li>join()：将一系列子字符串连接起来<br><strong>基本格式：”字符串”.join(变量名)</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="string">&#x27;hello&#x27;</span>,<span class="string">&#x27;my&#x27;</span>,<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;is&#x27;</span>,<span class="string">&#x27;Jason&#x27;</span>]</span><br><span class="line">b = <span class="string">&quot;*&quot;</span>.join(a)</span><br><span class="line">c = <span class="string">&quot;&quot;</span>.join(a)</span><br><span class="line">d = <span class="string">&quot;\n&quot;</span>.join(a)</span><br><span class="line">print(b)</span><br><span class="line">print(c)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200611191927953.png" alt="在这里插入图片描述"><br>【注】<strong>字符串拼接符“+” VS join()函数</strong><br>使用字符串拼接符+，会生成新的字符串对象，因此不推荐使用+来拼接字符串。<strong>推荐 使用 join 函数</strong>，因为 join 函数在拼接字符串之前会计算所有字符串的长度，然后逐一拷贝， 仅新建一次对象。</p>
+<h4 id="字符串驻留机制和字符串比较"><a href="#字符串驻留机制和字符串比较" class="headerlink" title="字符串驻留机制和字符串比较"></a>字符串驻留机制和字符串比较</h4><p>仅保存一份相同且不可变字符串的方法，不同的值被存放在字符串驻留池中。 Python 支持字符串驻留机制，对于符合标识符规则的字符串（仅包含<strong>下划线（_）、字母 和数字</strong>）会启用字符串驻留机制驻留机制。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">&quot;dd#&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="string">&quot;dd#&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a == b</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str1 = <span class="string">&quot;aa&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str2 = <span class="string">&quot;bb&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str1+str2 <span class="keyword">is</span> <span class="string">&quot;aabb&quot;</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>str1+str2 == <span class="string">&quot;aabb&quot;</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = <span class="string">&quot;add_2&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = <span class="string">&quot;add_2&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c <span class="keyword">is</span> d</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c == d</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br></pre></td></tr></table></figure>
+
+<h4 id="字符串比较和同一性"><a href="#字符串比较和同一性" class="headerlink" title="字符串比较和同一性"></a>字符串比较和同一性</h4><p>注意区别 == / != 和 is / not is</p>
+<ul>
+<li>== / != 比较的是字符串的<strong>值</strong>，也就是对象中的value属性，是否含有相同字符</li>
+<li>is / not is 比较的是对象的<strong>地址</strong>，比较两个对象是否是同一个对象<h4 id="成员操作符"><a href="#成员操作符" class="headerlink" title="成员操作符"></a>成员操作符</h4></li>
+<li>in / not in：判断某个字符（子字符串）是否存在于字符串中<h4 id="转义字符总结"><a href="#转义字符总结" class="headerlink" title="转义字符总结"></a>转义字符总结</h4>基本：\ + 特殊字符</li>
+<li>\（行尾）：续行符</li>
+<li>\\：单反斜杠</li>
+<li>\‘：单引号</li>
+<li>\“：双引号</li>
+<li>\b：退格（Backspace）</li>
+<li>\t：横向制表符</li>
+<li>\r：回车</li>
+<li>\n：换行<h4 id="字符串其他常用方法"><a href="#字符串其他常用方法" class="headerlink" title="字符串其他常用方法"></a>字符串其他常用方法</h4>（1）常用查找方法：</li>
+<li>变量名.startswith(“字符串”)：是否以该字符串为开始（返回布尔值）</li>
+<li>变量名.endswith(“字符串”)：是否以该字符串为结束（返回布尔值）</li>
+<li>变量名.find(“字符串”)：该字符串<strong>第一次</strong>出现的位置下标</li>
+<li>变量名.rfind(“字符串”)：该字符串<strong>最后一次</strong>出现的位置下标</li>
+<li>变量名.count(“字符串”)：指定字符串共出现了几次</li>
+<li>变量名.isalnum(“字符串”)：所有字符是否全是<strong>字母或数字</strong>（返回布尔值）</li>
+</ul>
+<p>（2）去除首尾信息、删除空白</p>
+<ul>
+<li>变量名.strip(“字符串”)：去除首尾的指定字符串信息，可以为空，默认为空白符</li>
+<li>变量名.lstrip(“字符串”)：去除首部（左侧）的指定字符串信息，可以为空，默认为空白符——&gt;类比左对齐</li>
+<li>变量名.rstrip(“字符串”)：去除尾部（右侧）的指定字符串信息，可以为空，默认为空白符——&gt;类比右对齐</li>
+</ul>
+<p>（3）格式排版</p>
+<ul>
+<li>变量名.center(整个版面长度,”填充字符”)：居中，默认空白符</li>
+<li>变量名.ljust(整个版面长度,”填充字符”)：左对齐，默认空白符</li>
+<li>变量名.rjust(整个版面长度,”填充字符”)：右对齐，默认空白符<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;fgdigdh&quot;</span></span><br><span class="line">print(a.center(<span class="number">13</span>,<span class="string">&quot;*&quot;</span>))</span><br><span class="line">print(a.ljust(<span class="number">11</span>,<span class="string">&quot;#&quot;</span>))</span><br><span class="line">print(a.rjust(<span class="number">16</span>,<span class="string">&quot;@&quot;</span>))</span><br></pre></td></tr></table></figure>
+<img src="https://img-blog.csdnimg.cn/20200611220842851.png" alt="在这里插入图片描述"><br>（4）其他字符串检测函数</li>
+<li>isalnum()：是否为字母或数字  </li>
+<li>isalpha()：检测字符串是否只由字母组成(含汉字)</li>
+<li>isdigit()：检测字符串是否只由数字组成</li>
+<li>isspace()：检测是否为空白符</li>
+<li>isupper()：是否为大写字母</li>
+<li>islower()：是否为小写字母<h4 id="字符串的格式化"><a href="#字符串的格式化" class="headerlink" title="字符串的格式化"></a>字符串的格式化</h4>Python2.6 开始，新增了一种格式化字符串的函数 **str.format()**，它增强了字符串格式化的 功能。<br>format 函数可以接受不限个参数，位置可以不按顺序。</li>
+</ul>
+<p><strong>基本格式1（索引）：</strong><br><strong>变量名 = “属性一是：{0} , 属性二是：{1}”<br>变量名.format(属性一值，属性二值)</strong></p>
+<p><strong>基本格式2（参数名）：</strong><br><strong>变量名 = “属性一是：{属性一变量名。} , 属性二是：{属性二变量名}”<br>变量名.format(属性一变量名 = 属性一值，属性二变量名 = 属性二值)</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;名字是:&#123;0&#125;,年龄是:&#123;1&#125;,&#123;0&#125;很优秀&quot;</span></span><br><span class="line">print(a.format(<span class="string">&quot;Jason&quot;</span>,<span class="number">24</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;名字是:&#123;name&#125;,年龄是:&#123;age&#125;,&#123;name&#125;很优秀&quot;</span></span><br><span class="line">print(a.format(age = <span class="number">24</span>,name = <span class="string">&quot;Jason&quot;</span>))</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200612174951631.png" alt="在这里插入图片描述"></p>
+<h4 id="填充与对齐"><a href="#填充与对齐" class="headerlink" title="填充与对齐"></a>填充与对齐</h4><ul>
+<li>^：居中</li>
+<li>&lt;：左对齐</li>
+<li>＞：右对齐</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;&#123;:*&gt;8&#125;&quot;</span>.format(<span class="string">&quot;233&quot;</span>)</span><br><span class="line">print(a)</span><br><span class="line">b = <span class="string">&quot;我是&#123;name&#125;,我喜欢&#123;num:*^8&#125;&quot;</span>.format(num = <span class="number">666</span>,name = <span class="string">&quot;Jason&quot;</span>)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200612181955869.png" alt="在这里插入图片描述"></p>
+<h4 id="数字格式化"><a href="#数字格式化" class="headerlink" title="数字格式化"></a>数字格式化</h4><p><img src="https://img-blog.csdnimg.cn/20200612182203172.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NDk1NDY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;我今年&#123;age&#125;岁了，出生于&#123;year&#125;年，平均学分绩点&#123;gpa:.1f&#125;，\n\</span></span><br><span class="line"><span class="string">    今天的温度为&#123;tem:+.2f&#125;摄氏度，路上买菜&#123;price:.0f&#125;元1斤，\n\</span></span><br><span class="line"><span class="string">    又想起曾经在跑道上穿着&#123;num:0&gt;2d&#125;号的球服在场上奔跑，\n\</span></span><br><span class="line"><span class="string">    拿到了&#123;salary:4&lt;4d&#125;元的工资，五年后，我拿到了&#123;pay:,&#125;的支票，\n\</span></span><br><span class="line"><span class="string">    后来我拿出&#123;percent:.2%&#125;的积蓄投身公益事业，充实有意义&quot;</span></span><br><span class="line">print(a.format(age = <span class="number">24</span> , year = <span class="number">1996</span> , gpa = <span class="number">3.15</span> , tem = <span class="number">-15.65</span> , price = <span class="number">2.99</span> ,</span><br><span class="line">               num = <span class="number">5</span> , salary = <span class="number">6</span> , pay = <span class="number">1800000</span> , percent = <span class="number">0.75</span>))</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200612184747602.png" alt="在这里插入图片描述"></p>
+<h4 id="可变字符串"><a href="#可变字符串" class="headerlink" title="可变字符串"></a>可变字符串</h4><p>在 Python 中，字符串属于不可变对象，不支持原地修改，如果需要修改其中的值，只能创建新的字符串对象。但是，有时我们需要<strong>原地</strong>修改字符串，可以使用 <strong>io.StringIO 对象或 array 模块。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> io</span><br><span class="line">a = <span class="string">&quot;welcome to ASD&quot;</span></span><br><span class="line">a_io = io.StringIO(a)</span><br><span class="line">print(a_io)</span><br><span class="line">print(a_io.getvalue())</span><br><span class="line">a_io.seek(<span class="number">11</span>)</span><br><span class="line">a_io.write(<span class="string">&quot;P&quot;</span>)</span><br><span class="line">print(a_io.getvalue())</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200612185724609.png" alt="在这里插入图片描述"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/01/%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%B0%8F%E7%99%BD%E7%9A%84Python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AF%B9%E8%B1%A1%E3%80%81%E5%8F%98%E9%87%8F%E3%80%81%E7%AE%80%E5%8D%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E8%BF%90%E7%AE%97%E7%AC%A6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-零基础小白的Python学习之路（一）基础起步及编程环境搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
