@@ -152,6 +152,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-零基础小白的Python学习之路（一）基础起步及编程环境搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/01/%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%B0%8F%E7%99%BD%E7%9A%84Python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%B8%80%EF%BC%89%E5%9F%BA%E7%A1%80%E8%B5%B7%E6%AD%A5%E5%8F%8A%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">零基础小白的Python学习之路（一）基础起步及编程环境搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/01/%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%B0%8F%E7%99%BD%E7%9A%84Python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%B8%80%EF%BC%89%E5%9F%BA%E7%A1%80%E8%B5%B7%E6%AD%A5%E5%8F%8A%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+  	<time datetime="2020-08-01T09:21:59.205Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考资料：《Python编程 从入门到实战》+ 尚学堂Python400集</p>
+<h1 id="Python介绍"><a href="#Python介绍" class="headerlink" title="Python介绍"></a>Python介绍</h1><p>Python是一门<strong>解释性、面向对象</strong>的编程语言，由龟叔命名为Python（中文：大蟒蛇，由于当时龟叔在追的一部英剧Monty python and the Flying Circus而命名）<br>下载官网网址   <a target="_blank" rel="noopener" href="http://www.python.org/">http://www.python.org</a><br>提供interactive shell 入门Python</p>
+<p>特点：</p>
+<ul>
+<li>可读性强：提高生产率</li>
+<li>简洁：不再有C语言中指针等复杂数据类型，关注任务本身而不必过于关注复杂语法</li>
+<li>面向对象</li>
+<li>免费、开源</li>
+<li>可移植性、跨平台：与Java类似可被编译成与OS相关的二进制代码，进行解释执行</li>
+<li>库丰富</li>
+<li>可扩展性</li>
+</ul>
+<p>应用范围：</p>
+<ul>
+<li>科学计算</li>
+<li>人工智能</li>
+<li>WEB服务端、大型网站后端等（YouTube、gmail）</li>
+<li>GUI开发（图形用户界面开发）</li>
+<li>其他。。。</li>
+</ul>
+<p>目前的Python有两个版本：Python2 和 Python3<br>Python2 是20年前发布的， 老版本可能在近年会退出历史舞台，Python3 是08年发布的，所以建议同为小白的童鞋从Python3开始学就可以了</p>
+<h1 id="编程环境搭建（针对window系统）"><a href="#编程环境搭建（针对window系统）" class="headerlink" title="编程环境搭建（针对window系统）"></a>编程环境搭建（针对window系统）</h1><h2 id="1、安装Python-IDLE"><a href="#1、安装Python-IDLE" class="headerlink" title="1、安装Python IDLE"></a>1、安装Python IDLE</h2><p>官网上下载Python：python-3.8.3（版本会不断更新）<br><img src="https://img-blog.csdnimg.cn/20200608184414385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NDk1NDY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>像正常软件一样安装即可，注意环境变量要勾选上：Add Python to Environment variable，这样就可以在windows命令行模式下运行Python解释器</p>
+<h2 id="2、安装Python开发环境"><a href="#2、安装Python开发环境" class="headerlink" title="2、安装Python开发环境"></a>2、安装Python开发环境</h2><p>（1）PyCharm：<a target="_blank" rel="noopener" href="https://www.jetbrains.com/pycharm/download/#section=windows">https://www.jetbrains.com/pycharm/download/#section=windows</a><br>（2）文本编辑器Geany：官网<a target="_blank" rel="noopener" href="http://geany.org/">http://geany.org/</a><br>（3）eclipse：<a target="_blank" rel="noopener" href="https://www.eclipse.org/">https://www.eclipse.org/</a></p>
+<p>选一个就可以，这里我用的是PyCharm 和 Geany</p>
+<p><strong>PyCharm安装与基本使用</strong><br>pycharm-professional-2020.1.2<br>1.windows用户根据系统64位/32位选择<br>2.一般一直点击下一步即可<br>3.激活 / 试用（evaluate for free） 都可以<br>4.根据喜好选择不同风格<br><img src="https://img-blog.csdnimg.cn/20200608194721426.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NDk1NDY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>5.创建、打开、运行项目：<br>Create New Project—&gt;选择路径（尽量英文）<br><img src="https://img-blog.csdnimg.cn/202006081956562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NDk1NDY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>鼠标放到项目处右击—&gt;New—&gt;Python File<br><img src="https://img-blog.csdnimg.cn/20200608195726902.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NDk1NDY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>写完代码—&gt;鼠标放在代码编辑区空白右击—&gt;Run 文件名<br><img src="https://img-blog.csdnimg.cn/20200608195753560.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NDk1NDY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>6.字体设置<br>File→Setting→Editor→Font 把字体调大一些<br><img src="https://img-blog.csdnimg.cn/20200608195907478.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NDk1NDY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200608195938238.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NDk1NDY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>文本编辑器Geany安装与基本使用</strong><br>这个是中文版的很好用<br>看着界面就会操作了<br><img src="https://img-blog.csdnimg.cn/20200608200326406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NDk1NDY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>以上安装完就可以进行愉快的编程啦！</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/01/%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%B0%8F%E7%99%BD%E7%9A%84Python%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E4%B8%80%EF%BC%89%E5%9F%BA%E7%A1%80%E8%B5%B7%E6%AD%A5%E5%8F%8A%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-我的第一篇博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
